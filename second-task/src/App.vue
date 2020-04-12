@@ -36,7 +36,7 @@
 
         </v-row>
     </v-content> 
-    <v-content class="main-container" v-if="!isShowLogin ">
+    <v-content class="main-container" v-else>
         <v-row class="contain" style="margin: 0; position: fixed; bottom: 0">
 
           <v-col cols="1" style="display: flex; justify-content: flex-start; align-items: center; flex-direction: column">
@@ -95,7 +95,10 @@ export default {
   }),
   methods: {
     changeView() {
-      this.isShowLogin = !this.isShowLogin
+      this.isShowLogin = !this.isShowLogin,
+      this.usernameValue = null
+      this.passwordValue = null
+      this.emailValue = null
     },
     register() {
       this.users.push(this.emailValue, this.usernameValue, this.passwordValue);
@@ -108,6 +111,7 @@ export default {
       )
       this.usernameValue = ''
       this.passwordValue = ''
+      this.emailValue = ''
     },
     login() {
       this.users.push(this.usernameValue, this.passwordValue);
